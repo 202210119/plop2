@@ -1,4 +1,4 @@
-import tkinter as tk
+import streamlit as st
 import requests
 
 # Define the API URL and authorization headers
@@ -12,8 +12,7 @@ def query_model(question, context):
     return response.json()
 
 # Function to extract notes from the inputted text
-def extract_notes():
-    essay_text = essay_textbox.get("1.0", "end-1c")
+def extract_notes(essay_text):
     # Split essay into sentences
     sentences = essay_text.split(". ")
     notes = []
@@ -28,28 +27,21 @@ def extract_notes():
             notes.append(note_text)
     # Join all the notes into a single string
     notes_text = "\n".join(notes)
-    # Delete previous content in notes_textbox and insert the new notes
-    notes_textbox.delete(1.0, tk.END)
-    notes_textbox.insert(tk.END, notes_text)
+    return notes_text
 
-# Create the main Tkinter window
-root = tk.Tk()
-root.title("Essay Notes Extractor")
+# Streamlit UI
+st.title("Essay Notes Extractor")
 
-# Create text box for inputting the essay
-essay_label = tk.Label(root, text="Input Essay:")
-essay_label.pack()
-essay_textbox = tk.Text(root, height=10, width=50)
-essay_textbox.pack()
+# Input text box for the essay
+essay_text = st.text_area("Input Essay:", height=300)
 
-# Create button to trigger note extraction
-extract_button = tk.Button(root, text="Extract Notes", command=extract_notes)
-extract_button.pack()
-
-# Create text box for displaying the notes
-notes_label = tk.Label(root, text="Extracted Notes:")
-notes_label.pack()
-notes_textbox = tk.Text(root, height=10, width=50)
-notes_textbox.pack()
-
-root.mainloop()
+# Button to trigger note extraction
+if st.button("Extract Notes"):
+    if essay_text:
+        # Extract notes from the inputted essay text
+        extracted_notes = extract_notes(essay_text)
+        # Display the extracted notes
+        st.subheader("Extracted Notes:")
+        st.write(extracted_notes)
+    else:
+        st.warning("Please input an essay first.")
