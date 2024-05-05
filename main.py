@@ -11,22 +11,25 @@ def query_model(question, context):
     response = requests.post(API_URL, headers=headers, json=payload)
     return response.json()
 
-# Function to extract notes from the inputted text
+# Function to extract notes from the inputted text using the model
 def extract_notes(essay_text):
-    # Split essay into sentences
-    sentences = essay_text.split(". ")
-    notes = []
-    for sentence in sentences:
-        # Extract notes from each sentence using the model
-        note = query_model("What is this sentence about?", sentence)
-        # Check if 'answer' key exists in the response
-        if 'answer' in note:
-            note_text = note['answer']
-            # Capitalize the first letter and add period at the end to ensure full sentence
-            note_text = note_text.capitalize() + "."
-            notes.append(note_text)
-    # Join all the notes into a single string
-    return notes
+    payload = {"inputs": essay_text}
+    response = requests.post(API_URL, headers=headers, json=payload)
+    if response.status_code == 200:
+        extracted_sentences = response.json().get("sentences", [])
+        notes = []
+        for sentence in extracted_sentences:
+            # Extract notes from each sentence using the model
+            note = query_model("What is this sentence about?", sentence)
+            # Check if 'answer' key exists in the response
+            if 'answer' in note:
+                note_text = note['answer']
+                # Capitalize the first letter and add period at the end to ensure full sentence
+                note_text = note_text.capitalize() + "."
+                notes.append(note_text)
+        return notes
+    else:
+        st.error("Error extracting notes. Please try again later.")
 
 # Streamlit UI
 st.title("Essay Notes Extractor")
