@@ -26,7 +26,8 @@ def extract_notes(essay_text):
             note_text = note_text.capitalize() + "."
             notes.append(note_text)
     # Join all the notes into a single string
-    return notes
+    notes_text = "\n".join(notes)
+    return notes_text
 
 # Streamlit UI
 st.title("Essay Notes Extractor")
@@ -41,7 +42,6 @@ if st.button("Extract Notes"):
         extracted_notes = extract_notes(essay_text)
         # Display the extracted notes
         st.subheader("Extracted Notes:")
-        for note in extracted_notes:
-            st.write(note)
+        st.write(extracted_notes)
     else:
         st.warning("Please input an essay first.")
