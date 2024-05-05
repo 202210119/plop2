@@ -1,6 +1,14 @@
 import streamlit as st
 import requests
-from nltk.tokenize import sent_tokenize
+import subprocess
+import nltk
+
+# Function to download NLTK data
+def download_nltk_data():
+    subprocess.run(["python", "-m", "nltk.downloader", "punkt"])
+
+# Download NLTK data (if not already downloaded)
+download_nltk_data()
 
 API_URL = "https://api-inference.huggingface.co/models/Falconsai/text_summarization"
 headers = {"Authorization": "Bearer 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"}
@@ -14,7 +22,7 @@ def query(payload):
         return response_json["summary_text"][:200]
 
 def get_summary(input_text):
-    sentences = sent_tokenize(input_text)
+    sentences = nltk.sent_tokenize(input_text)
     summarized_text = ""
     for sentence in sentences:
         summarized_sentence = query({"inputs": sentence.strip()})
