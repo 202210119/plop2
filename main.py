@@ -24,9 +24,9 @@ def get_summary(input_text):
                 summarized_text += "-" + s.strip() + ".\n"
     return summarized_text
 
-st.title("Text Summarizer")
+st.title("{placeholder} AI")
 
 input_text = st.text_area("Enter Text:", height=300)
-if st.button("Summarize"):
+if st.button("Get notes"):
     summary = get_summary(input_text)
-    st.text_area("Summary:", value=summary, height=500)
+    st.text_area("Notes:", value=summary, height=500)
