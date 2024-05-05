@@ -1,5 +1,6 @@
 import streamlit as st
 import requests
+import re
 
 # Define the API URL and authorization headers
 API_URL = "https://api-inference.huggingface.co/models/deepset/tinyroberta-squad2"
@@ -13,8 +14,8 @@ def query_model(question, context):
 
 # Function to extract notes from the inputted text
 def extract_notes(essay_text):
-    # Split essay into sentences
-    sentences = essay_text.split(". ")
+    # Split essay into sentences using regex
+    sentences = re.split(r'(?<=[.!?]) +', essay_text)
     notes = []
     for sentence in sentences:
         # Extract notes from each sentence using the model
@@ -24,8 +25,7 @@ def extract_notes(essay_text):
             note_text = note['answer']
             # Capitalize the first letter and add period at the end to ensure full sentence
             note_text = note_text.capitalize() + "."
-            notes.append(note_text)
-    # Join all the notes into a single string
+            notes.append(f"- {note_text}")
     return notes
 
 # Streamlit UI
