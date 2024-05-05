@@ -1,9 +1,11 @@
 import streamlit as st
 import requests
-from transformers import pipeline
+from transformers import pipeline, BartTokenizer, BartForConditionalGeneration
 
-# Initialize the pipeline for text summarization
-summarization_pipeline = pipeline("summarization", model="t5-small", tokenizer="t5-small")
+# Initialize the BART model and tokenizer
+tokenizer = BartTokenizer.from_pretrained("facebook/bart-large-cnn")
+model = BartForConditionalGeneration.from_pretrained("facebook/bart-large-cnn")
+summarization_pipeline = pipeline("summarization", model=model, tokenizer=tokenizer)
 
 API_URL = "https://api-inference.huggingface.co/models/Falconsai/text_summarization"
 headers = {"Authorization": "Bearer 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"}
