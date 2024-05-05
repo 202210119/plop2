@@ -42,10 +42,12 @@ if st.button("Extract Notes"):
     if essay_text:
         # Extract notes from the inputted essay text
         extracted_notes = extract_notes(essay_text)
-        print("Extracted Notes:", extracted_notes)  # Add this line for debugging
-        # Display the extracted notes
-        st.subheader("Extracted Notes:")
-        for note in extracted_notes:
-            st.write(note)
+        if extracted_notes:
+            # Display the extracted notes
+            st.subheader("Extracted Notes:")
+            for note in extracted_notes:
+                st.write(note)
+        else:
+            st.warning("No notes extracted.")
     else:
         st.warning("Please input an essay first.")
