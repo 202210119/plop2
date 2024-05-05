@@ -1,11 +1,13 @@
 import streamlit as st
 import requests
-from transformers import pipeline, BartTokenizer, BartForConditionalGeneration
+import nltk
 
-# Initialize the BART model and tokenizer
-tokenizer = BartTokenizer.from_pretrained("facebook/bart-large-cnn")
-model = BartForConditionalGeneration.from_pretrained("facebook/bart-large-cnn")
-summarization_pipeline = pipeline("summarization", model=model, tokenizer=tokenizer)
+# Function to install NLTK data
+def install_nltk_data():
+    nltk.download('punkt')
+
+# Install NLTK data (if not already installed)
+install_nltk_data()
 
 API_URL = "https://api-inference.huggingface.co/models/Falconsai/text_summarization"
 headers = {"Authorization": "Bearer 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"}
@@ -19,11 +21,10 @@ def query(payload):
         return response_json["summary_text"][:200]
 
 def get_summary(input_text):
-    # Tokenize the input text into sentences using Transformers tokenizer
-    sentences = summarization_pipeline(input_text, max_length=512, truncation=True)
+    sentences = nltk.sent_tokenize(input_text)
     summarized_text = ""
     for sentence in sentences:
-        summarized_sentence = query({"inputs": sentence["summary_text"].strip()})
+        summarized_sentence = query({"inputs": sentence.strip()})
         summarized_sentences = summarized_sentence.split('.')
         for s in summarized_sentences:
             if s.strip():
