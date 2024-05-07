@@ -1,3 +1,5 @@
+
+You sent
 import streamlit as st
 import requests
 from nltk.tokenize import sent_tokenize
@@ -31,6 +33,16 @@ def get_summary(input_text):
     return summarized_text
 
 st.title("MUNI.AI")
+
+st.markdown("""
+### Instructions
+
+1. Copy the text you want to get notes from.
+2. Press the button to get notes.
+3. Copy the output and enjoy easier note-taking.
+
+*Note:* If it gives an error, refresh the page. If the issue still persists, contact 202210119@feualabang.edu.ph.
+""")
 
 input_text = st.text_area("Enter Text:", height=300)
 if st.button("Get Notes"):
