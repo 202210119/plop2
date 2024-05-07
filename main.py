@@ -33,12 +33,19 @@ def get_summary(input_text):
 
 def extract_text_from_pdf(uploaded_file):
     text = ""
-    pdf_document = fitz.open(uploaded_file)
-    for page_num in range(len(pdf_document)):
-        page = pdf_document.load_page(page_num)
-        text += page.get_text()
-    pdf_document.close()
+    try:
+        if uploaded_file.type == "application/pdf":
+            pdf_document = fitz.open(stream=uploaded_file)
+            for page_num in range(len(pdf_document)):
+                page = pdf_document.load_page(page_num)
+                text += page.get_text()
+            pdf_document.close()
+        else:
+            st.error("Please upload a valid PDF file.")
+    except Exception as e:
+        st.error(f"Error occurred while extracting text from PDF: {str(e)}")
     return text
+
 
 st.title("MUNI.AI")
 
