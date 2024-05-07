@@ -3,7 +3,7 @@ import requests
 from nltk.tokenize import sent_tokenize
 import nltk
 
-ntlk.download('punkt')
+nltk.download('punkt')
 
 API_URL = "https://api-inference.huggingface.co/models/Falconsai/text_summarization"
 headers = {"Authorization": "Bearer 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"}
