@@ -12,9 +12,12 @@ def query(payload):
     response = requests.post(API_URL, headers=headers, json=payload)
     response_json = response.json()
     if isinstance(response_json, list):
-        return response_json[0]["summary_text"]
+        if response_json:
+            return response_json[0].get("summary_text", "")[:200]
+        else:
+            return "No summary available"
     else:
-        return response_json["summary_text"][:200]
+        return response_json.get("summary_text", "")[:200]
 
 def get_summary(input_text):
     sentences = sent_tokenize(input_text)
