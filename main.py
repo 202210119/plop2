@@ -2,6 +2,8 @@ import streamlit as st
 import requests
 from nltk.tokenize import sent_tokenize
 
+ntlk.download('punkt')
+
 API_URL = "https://api-inference.huggingface.co/models/Falconsai/text_summarization"
 headers = {"Authorization": "Bearer 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"}
 
