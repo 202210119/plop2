@@ -58,7 +58,7 @@ st.markdown("""
 2. Press the button to get notes.
 3. Copy the output and enjoy easier note-taking.
 
-*Note: If it gives an error, refresh the page. If the issue still persists, contact 202210119@feualabang.edu.ph*
+*Note: If there is an error, refresh the page. If the issue still persists, contact 202210119@feualabang.edu.ph*
 """)
 
 input_option = st.radio("Select input option:", ("Paste Text", "Upload PDF"))
