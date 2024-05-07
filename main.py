@@ -2,7 +2,7 @@ import streamlit as st
 import requests
 from nltk.tokenize import sent_tokenize
 import nltk
-import fitz  # PyMuPDF
+import pymypdf
 
 nltk.download('punkt')
 
