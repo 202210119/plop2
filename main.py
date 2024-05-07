@@ -35,7 +35,8 @@ def extract_text_from_pdf(uploaded_file):
     text = ""
     try:
         if uploaded_file.type == "application/pdf":
-            pdf_document = fitz.open(stream=uploaded_file)
+            pdf_content = uploaded_file.read()
+            pdf_document = fitz.open(stream=pdf_content, filetype="pdf")
             for page_num in range(len(pdf_document)):
                 page = pdf_document.load_page(page_num)
                 text += page.get_text()
@@ -45,6 +46,7 @@ def extract_text_from_pdf(uploaded_file):
     except Exception as e:
         st.error(f"Error occurred while extracting text from PDF: {str(e)}")
     return text
+
 
 
 st.title("MUNI.AI")
