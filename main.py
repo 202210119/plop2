@@ -2,6 +2,7 @@ import streamlit as st
 import requests
 from nltk.tokenize import sent_tokenize
 import nltk
+import fitz  # PyMuPDF
 
 nltk.download('punkt')
 
@@ -30,19 +31,36 @@ def get_summary(input_text):
                 summarized_text += "-" + s.strip() + ".\n"
     return summarized_text
 
+def extract_text_from_pdf(uploaded_file):
+    text = ""
+    pdf_document = fitz.open(uploaded_file)
+    for page_num in range(len(pdf_document)):
+        page = pdf_document.load_page(page_num)
+        text += page.get_text()
+    pdf_document.close()
+    return text
+
 st.title("MUNI.AI")
 
 st.markdown("""
 ### Instructions
 
-1. Copy the text you want to get notes from.
+1. Copy the text you want to get notes from or upload a PDF file.
 2. Press the button to get notes.
 3. Copy the output and enjoy easier note-taking.
 
 *Note:* If it gives an error, refresh the page. If the issue still persists, contact 202210119@feualabang.edu.ph.
 """)
 
-input_text = st.text_area("Enter Text:", height=300)
+input_option = st.radio("Select input option:", ("Paste Text", "Upload PDF"))
+
+if input_option == "Paste Text":
+    input_text = st.text_area("Enter Text:", height=300)
+elif input_option == "Upload PDF":
+    uploaded_file = st.file_uploader("Upload PDF", type=['pdf'])
+    if uploaded_file is not None:
+        input_text = extract_text_from_pdf(uploaded_file)
+
 if st.button("Get Notes"):
     summary = get_summary(input_text)
     st.text_area("Notes:", value=summary, height=500)
