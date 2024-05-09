@@ -47,8 +47,6 @@ def extract_text_from_pdf(uploaded_file):
         st.error(f"Error occurred while extracting text from PDF: {str(e)}")
     return text
 
-
-
 st.title("MUNI.AI")
 
 st.markdown("""
@@ -72,4 +70,40 @@ elif input_option == "Upload PDF":
 
 if st.button("Get Notes"):
     summary = get_summary(input_text)
-    st.text_area("Notes:", value=summary, height=500)
+    st.text_area("Notes:", value=summary, height=500, key='notes',  # Add key to prevent Streamlit from rerendering
+                 help='notes')  # Add a help string to keep the UI elements consistent
+
+# Add custom CSS to make text area non-editable and set background image
+st.markdown("""
+        <style>
+        .watermark {
+            position: relative;
+            width: 100%;
+            height: 500px; /* Adjust height as needed */
+            background-image: url('https://example.com/your-watermark.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            pointer-events: none;
+        }
+
+        .text-area {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            resize: none;
+            border: none;
+            background-color: transparent;
+            color: black; /* Adjust text color if necessary */
+        }
+        </style>
+    """, unsafe_allow_html=True)
+
+# Display the watermark and the text area
+st.markdown("""
+    <div class="watermark">
+        <textarea class="text-area" readonly>Copy-paste disabled. Use the button to generate notes.</textarea>
+    </div>
+""", unsafe_allow_html=True)
