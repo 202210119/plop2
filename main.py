@@ -70,17 +70,15 @@ elif input_option == "Upload PDF":
 
 if st.button("Get Notes"):
     summary = get_summary(input_text)
-    st.text_area("Notes:", value=summary, height=500, key='notes',  # Add key to prevent Streamlit from rerendering
-                 help='notes')  # Add a help string to keep the UI elements consistent
+    st.text_area("Notes:", value=summary, height=500, key='notes',
 
-# Add custom CSS to make text area non-editable and set background image
 st.markdown("""
         <style>
         .watermark {
             position: relative;
             width: 100%;
             height: 500px; /* Adjust height as needed */
-            background-image: url('https://example.com/your-watermark.png');
+            background-image: url('https://github.com/202210119/plop2/blob/main/watermark.png');
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
@@ -101,7 +99,6 @@ st.markdown("""
         </style>
     """, unsafe_allow_html=True)
 
-# Display the watermark and the text area
 st.markdown("""
     <div class="watermark">
         <textarea class="text-area" readonly>Copy-paste disabled. Use the button to generate notes.</textarea>
