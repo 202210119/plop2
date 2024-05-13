@@ -59,17 +59,36 @@ st.markdown("""
 *Note: If there is an error, refresh the page. If the issue still persists, contact 202210119@feualabang.edu.ph*
 """)
 
-page_bg_img = '''
+background_image = """
 <style>
-.stAppViewContainer {
-background-image: url("https://raw.githubusercontent.com/202210119/plop2/main/watermark.png");
-background-repeat: repeat;
+[data-testid="stAppViewContainer"] > .main {
+    background-image: url("https://images.unsplash.com/photo-1542281286-9e0a16bb7366");
+    background-size: 100vw 100vh;  # This sets the size to cover 100% of the viewport width and height
+    background-position: center;  
+    background-repeat: no-repeat;
 }
 </style>
-'''
+"""
 
-st.markdown(page_bg_img, unsafe_allow_html=True)
+st.markdown(background_image, unsafe_allow_html=True)
 
+st.text_input("", placeholder="Streamlit CSS ")
+
+input_style = """
+<style>
+input[type="text"] {
+    background-color: transparent;
+    color: #a19eae;  // This changes the text color inside the input box
+}
+div[data-baseweb="base-input"] {
+    background-color: transparent !important;
+}
+[data-testid="stAppViewContainer"] {
+    background-color: transparent !important;
+}
+</style>
+"""
+st.markdown(input_style, unsafe_allow_html=True)
 input_option = st.radio("Select input option:", ("Paste Text", "Upload PDF"))
 
 if input_option == "Paste Text":
