@@ -47,10 +47,9 @@ def extract_text_from_pdf(uploaded_file):
         st.error(f"Error occurred while extracting text from PDF: {str(e)}")
     return text
 
-# Adding repeating background image using GitHub link
 page_bg_img = '''
 <style>
-["styles_streamlitAppContainer__w82h8"] {
+["styles_stateContainer__CelYF"] {
 background-image: url("https://raw.githubusercontent.com/202210119/plop2/main/watermark.png");
 background-size: cover;
 }
