@@ -73,3 +73,8 @@ elif input_option == "Upload PDF":
 if st.button("Get Notes"):
     summary = get_summary(input_text)
     st.markdown(f"<div style='white-space: pre-line; user-select: none;'>{summary}</div>", unsafe_allow_html=True)
+
+with open('./files/bg.css') as f:
+    css = f.read()
+
+st.markdown(f'<style>{css}</style>', unsafe_allow_html=True)
