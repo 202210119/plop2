@@ -9,6 +9,11 @@ nltk.download('punkt')
 API_URL = "https://api-inference.huggingface.co/models/Falconsai/text_summarization"
 headers = {"Authorization": "Bearer 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"}
 
+with open('bg.css') as f:
+    css = f.read()
+
+st.markdown(f'<style>{css}</style>', unsafe_allow_html=True)
+
 def query(payload):
     response = requests.post(API_URL, headers=headers, json=payload)
     response_json = response.json()
@@ -73,8 +78,3 @@ elif input_option == "Upload PDF":
 if st.button("Get Notes"):
     summary = get_summary(input_text)
     st.markdown(f"<div style='white-space: pre-line; user-select: none;'>{summary}</div>", unsafe_allow_html=True)
-
-with open('bg.css') as f:
-    css = f.read()
-
-st.markdown(f'<style>{css}</style>', unsafe_allow_html=True)
