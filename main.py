@@ -47,6 +47,8 @@ def extract_text_from_pdf(uploaded_file):
         st.error(f"Error occurred while extracting text from PDF: {str(e)}")
     return text
 
+
+
 st.title("MUNI.AI")
 
 st.markdown("""
@@ -69,8 +71,6 @@ textarea {
 </style>
 """
 
-st.write(css, unsafe_allow_html=True)
-
 input_option = st.radio("Select input option:", ("Paste Text", "Upload PDF"))
 
 if input_option == "Paste Text":
@@ -82,4 +82,4 @@ elif input_option == "Upload PDF":
 
 if st.button("Get Notes"):
     summary = get_summary(input_text)
-    st.markdown(f"<div style='white-space: pre-line; user-select: none;'>{summary}</div>", unsafe_allow_html=True)
+    st.markdown(f"<div style='white-space: pre-line; user-select: none;'>{summary}</div>", css, unsafe_allow_html=True)
