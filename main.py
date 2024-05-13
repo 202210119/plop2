@@ -59,6 +59,17 @@ st.markdown("""
 *Note: If there is an error, refresh the page. If the issue still persists, contact 202210119@feualabang.edu.ph*
 """)
 
+page_bg_img = '''
+<style>
+body {
+background-image: url("https://images.unsplash.com/photo-1542281286-9e0a16bb7366");
+background-size: cover;
+}
+</style>
+'''
+
+st.markdown(page_bg_img, unsafe_allow_html=True)
+
 input_option = st.radio("Select input option:", ("Paste Text", "Upload PDF"))
 
 if input_option == "Paste Text":
