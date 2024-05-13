@@ -62,7 +62,7 @@ st.markdown("""
 css = """
 <style>
 textarea {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkAAIAAAoAAv/lxKUAAAAASUVORK5CYII=');
+    background-image: url('https://raw.githubusercontent.com/202210119/plop2/main/watermark.png');
     background-repeat: repeat;
 }
 </style>
