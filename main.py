@@ -59,6 +59,18 @@ st.markdown("""
 *Note: If there is an error, refresh the page. If the issue still persists, contact 202210119@feualabang.edu.ph*
 """)
 
+css = """
+<style>
+textarea {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkAAIAAAoAAv/lxKUAAAAASUVORK5CYII=');
+    background-repeat: repeat;
+}
+</style>
+"""
+
+# Write the CSS to the page
+st.write(css, unsafe_allow_html=True)
+
 input_option = st.radio("Select input option:", ("Paste Text", "Upload PDF"))
 
 if input_option == "Paste Text":
