@@ -47,8 +47,6 @@ def extract_text_from_pdf(uploaded_file):
         st.error(f"Error occurred while extracting text from PDF: {str(e)}")
     return text
 
-
-
 st.title("MUNI.AI")
 
 st.markdown("""
@@ -66,7 +64,7 @@ css = """
 textarea {
     background-image: url('https://raw.githubusercontent.com/202210119/plop2/main/watermark.png');
     background-repeat: repeat;
-    opacity: 0.3
+    opacity: 0.3;
 }
 </style>
 """
