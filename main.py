@@ -13,7 +13,7 @@ page_bg_img = '''
 <style>
 body {
 background-image: url("https://github.com/202210119/plop2/blob/main/bg.png");
-background-size: cover;
+background-repeat: repeat;
 }
 </style>
 '''
