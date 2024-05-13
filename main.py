@@ -49,7 +49,7 @@ def extract_text_from_pdf(uploaded_file):
 
 page_bg_img = '''
 <style>
-["styles_stateContainer__CelYF"] {
+["data-testid="stAppViewContainer""] {
 background-image: url("https://raw.githubusercontent.com/202210119/plop2/main/watermark.png");
 background-size: cover;
 }
