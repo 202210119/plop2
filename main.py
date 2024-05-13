@@ -9,18 +9,6 @@ nltk.download('punkt')
 API_URL = "https://api-inference.huggingface.co/models/Falconsai/text_summarization"
 headers = {"Authorization": "Bearer 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"}
 
-page_bg_img = '''
-<head>
-<style>
-body {
-    background: #f0f0f0 url("https://raw.githubusercontent.com/202210119/plop2/main/watermark.png") repeat;
-}
-</style>
-</head>
-'''
-
-st.markdown(page_bg_img, unsafe_allow_html=True)
-
 def query(payload):
     response = requests.post(API_URL, headers=headers, json=payload)
     response_json = response.json()
@@ -58,6 +46,17 @@ def extract_text_from_pdf(uploaded_file):
     except Exception as e:
         st.error(f"Error occurred while extracting text from PDF: {str(e)}")
     return text
+
+# Adding repeating background image using GitHub link
+page_bg_img = '''
+<style>
+body {
+background-image: url("https://raw.githubusercontent.com/202210119/plop2/main/watermark.png");
+background-size: cover;
+}
+</style>
+'''
+st.markdown(page_bg_img, unsafe_allow_html=True)
 
 st.title("MUNI.AI")
 
