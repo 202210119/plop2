@@ -80,4 +80,4 @@ elif input_option == "Upload PDF":
 
 if st.button("Get Notes"):
     summary = get_summary(input_text)
-    st.markdown(f"<div style='white-space: pre-line; user-select: none;'>{summary}</div>", css, unsafe_allow_html=True)
+    st.markdown(f"<div style='white-space: pre-line; user-select: none; {css}'>{summary}</div>", unsafe_allow_html=True)
