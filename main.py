@@ -50,7 +50,7 @@ def extract_text_from_pdf(uploaded_file):
 # Adding repeating background image using GitHub link
 page_bg_img = '''
 <style>
-head {
+[background] {
 background-image: url("https://raw.githubusercontent.com/202210119/plop2/main/watermark.png");
 background-size: cover;
 }
