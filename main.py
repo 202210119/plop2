@@ -69,7 +69,6 @@ textarea {
 </style>
 """
 
-# Write the CSS to the page
 st.write(css, unsafe_allow_html=True)
 
 input_option = st.radio("Select input option:", ("Paste Text", "Upload PDF"))
