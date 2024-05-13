@@ -63,15 +63,12 @@ background_image = """
 <style>
 [data-testid="stAppViewContainer"] > .main {
     background-image: url("https://raw.githubusercontent.com/202210119/plop2/main/watermark.png");
-    background-size: 100vw 100vh;
-    background-position: center;
     background-repeat: repeat;
 }
 </style>
 """
 st.markdown(background_image, unsafe_allow_html=True)
 
-st.markdown(input_style, unsafe_allow_html=True)
 input_option = st.radio("Select input option:", ("Paste Text", "Upload PDF"))
 
 if input_option == "Paste Text":
