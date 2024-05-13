@@ -12,9 +12,7 @@ headers = {"Authorization": "Bearer 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"}
 page_bg_img = '''
 <style>
 body {
-background-color: #f0f0f0;
-background-image: url("https://raw.githubusercontent.com/202210119/plop2/main/watermark.png");
-background-repeat: repeat;
+    background: #f0f0f0 url("https://raw.githubusercontent.com/202210119/plop2/main/watermark.png") repeat;
 }
 </style>
 '''
@@ -58,8 +56,6 @@ def extract_text_from_pdf(uploaded_file):
     except Exception as e:
         st.error(f"Error occurred while extracting text from PDF: {str(e)}")
     return text
-
-
 
 st.title("MUNI.AI")
 
