@@ -9,10 +9,16 @@ nltk.download('punkt')
 API_URL = "https://api-inference.huggingface.co/models/Falconsai/text_summarization"
 headers = {"Authorization": "Bearer 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"}
 
-with open('bg.css') as f:
-    css = f.read()
+page_bg_img = '''
+<style>
+body {
+background-image: url("https://images.unsplash.com/photo-1542281286-9e0a16bb7366");
+background-size: cover;
+}
+</style>
+'''
 
-st.markdown(f'<style>{css}</style>', unsafe_allow_html=True)
+st.markdown(page_bg_img, unsafe_allow_html=True)
 
 def query(payload):
     response = requests.post(API_URL, headers=headers, json=payload)
