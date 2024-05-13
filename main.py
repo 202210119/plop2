@@ -12,7 +12,7 @@ headers = {"Authorization": "Bearer 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"}
 page_bg_img = '''
 <style>
 body {
-background-image: url("https://github.com/202210119/plop2/blob/main/watermark.png");
+background-image: url("https://raw.githubusercontent.com/202210119/plop2/main/watermark.png");
 background-repeat: repeat;
 }
 </style>
