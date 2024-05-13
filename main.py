@@ -54,20 +54,10 @@ st.markdown("""
 
 1. Copy the text you want to get notes from or upload a PDF file.
 2. Press the button to get notes.
-3. The summarized text will be displayed below.
+3. Copy the output and enjoy easier note-taking.
 
 *Note: If there is an error, refresh the page. If the issue still persists, contact 202210119@feualabang.edu.ph*
 """)
-
-css = """
-<style>
-.streamlit-text-area textarea {
-    background-image: url('https://raw.githubusercontent.com/202210119/plop2/main/watermark.png');
-    background-repeat: repeat;
-    opacity: 0.3;
-}
-</style>
-"""
 
 input_option = st.radio("Select input option:", ("Paste Text", "Upload PDF"))
 
@@ -80,5 +70,4 @@ elif input_option == "Upload PDF":
 
 if st.button("Get Notes"):
     summary = get_summary(input_text)
-    st.write("notes:", value=summary, height=300, max_chars=None, key=None)
-    st.markdown(css, unsafe_allow_html=True)
+    st.markdown(f"<div style='white-space: pre-line; user-select: none;'>{summary}</div>", unsafe_allow_html=True)
