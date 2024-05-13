@@ -10,11 +10,13 @@ API_URL = "https://api-inference.huggingface.co/models/Falconsai/text_summarizat
 headers = {"Authorization": "Bearer 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"}
 
 page_bg_img = '''
+<head>
 <style>
 body {
     background: #f0f0f0 url("https://raw.githubusercontent.com/202210119/plop2/main/watermark.png") repeat;
 }
 </style>
+</head>
 '''
 
 st.markdown(page_bg_img, unsafe_allow_html=True)
