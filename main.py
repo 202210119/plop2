@@ -47,17 +47,6 @@ def extract_text_from_pdf(uploaded_file):
         st.error(f"Error occurred while extracting text from PDF: {str(e)}")
     return text
 
-page_bg_img = '''
-<style>
-["data-testid="stAppViewContainer"]{
-background-image: url("https://raw.githubusercontent.com/202210119/plop2/main/watermark.png");
-background-color: "#808080";
-background-repeat : repeat;
-}
-</style>
-'''
-st.markdown(page_bg_img, unsafe_allow_html=True)
-
 st.title("MUNI.AI")
 
 st.markdown("""
