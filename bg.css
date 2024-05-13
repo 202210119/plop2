@@ -1,6 +1,4 @@
-<div class="container"></div>
-
-.container{
+.background{
    background-image : url('https://github.com/202210119/plop2/blob/main/bg.png');
    background-size : 5000px 200px;
    background-repeat :  space;
