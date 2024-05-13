@@ -80,5 +80,5 @@ elif input_option == "Upload PDF":
 
 if st.button("Get Notes"):
     summary = get_summary(input_text)
-    st.text_area("Summarized Text:", value=summary, height=300, max_chars=None, key=None)
+    st.write("notes:", value=summary, height=300, max_chars=None, key=None)
     st.markdown(css, unsafe_allow_html=True)
