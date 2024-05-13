@@ -64,8 +64,7 @@ background_image = """
 [data-testid="stAppViewContainer"] > .main {
     background-image: url("https://raw.githubusercontent.com/202210119/plop2/main/watermark.png");
     background-repeat: repeat;
-    opacity: 0.5;
-}
+    }
 </style>
 """
 st.markdown(background_image, unsafe_allow_html=True)
