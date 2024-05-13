@@ -51,6 +51,7 @@ page_bg_img = '''
 <style>
 ["data-testid="stAppViewContainer""] {
 background-image: url("https://raw.githubusercontent.com/202210119/plop2/main/watermark.png");
+background-color: "#808080";
 background-repeat : repeat;
 }
 </style>
