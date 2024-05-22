@@ -62,7 +62,7 @@ st.markdown("""
 background_image = """
 <style>
 [data-testid="stAppViewContainer"] > .main {
-    background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url("https://raw.githubusercontent.com/202210119/plop2/main/watermark.png");
+    background-image: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url("https://raw.githubusercontent.com/202210119/plop2/main/watermark.png");
     background-repeat: repeat;
 }
 </style>
